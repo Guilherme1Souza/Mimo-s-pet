@@ -3,17 +3,20 @@ const totalSlides = document.querySelectorAll('.slide').length;
 let currentIndex = 0;
 
 export function updateCarousel() {
-    const offset = -currentIndex * 1000; // Largura de cada slide
+    const slideWidth = document.querySelector('.slide').offsetWidth; 
+    const offset = -currentIndex * slideWidth;
     slides.style.transform = `translateX(${offset}px)`;
 }
 
 export function nextSlide() {
-  currentIndex = (currentIndex + 1) % totalSlides;
-  updateCarousel();
+    currentIndex = (currentIndex + 1) % totalSlides;
+    updateCarousel();
 }
 
-// Função para voltar ao slide anterior
 export function prevSlide() {
-  currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-  updateCarousel();
+    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+    updateCarousel();
 }
+
+
+window.addEventListener('resize', updateCarousel);
