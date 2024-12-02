@@ -1,12 +1,18 @@
 .header__nav {
   display: flex;
-  justify-content: space-between; 
-  align-items: center; 
-  padding: 20px 20px; 
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px;
 }
 
 .img_logo {
   margin-bottom: 20px;
+}
+
+.nav__list {
+  font-family: "Roboto Slab", serif;
+  justify-content: center;
+  text-align: center;
 }
 
 .nav__list ul {
@@ -16,28 +22,121 @@
 }
 
 .nav__list ul li {
-  margin: 0 15px; 
+  margin: 0 15px;
 }
 
 .nav__list ul li a {
   text-decoration: none;
-  color: #222222; /* Cor padrão dos links */
-  
-  transition: color 0.3s ease, transform 0.3s ease; 
+  color: #222222; 
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .nav__list ul li a:hover {
-  color: #007bff; 
+  color: #007bff;
   cursor: pointer;
 }
 
 .social {
   display: flex;
-  gap: 15px; 
+  gap: 15px;
   margin-bottom: 20px;
 }
 
 .img_social {
   width: 25px;
   height: 25px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Fundo escuro semi-transparente */
+  display: none; /* Inicialmente escondido */
+  z-index: 10; /* Entre o menu e o conteúdo principal */
+}
+
+/* Menu hambúrguer */
+.hamburger-menu {
+  display: none;
+  font-size: 30px;
+  cursor: pointer;
+  z-index: 20; /* Acima do overlay */
+
+}
+
+.nav__list {
+  z-index: 20; /* Acima do overlay */
+}
+
+@media (max-width: 768px) {
+  .header__nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav__list {
+    display: none;
+    width: 160px;
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 20px;
+  }
+
+  .nav__list ul {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .hamburger-menu {
+    display: block;
+  }
+
+  .nav__list.active {
+    display: flex; /* Mostra o menu */
+    flex-direction: column;
+  }
+
+  .social {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  /* Quando o menu está ativo, exibe o overlay */
+  .nav__list.active + .overlay {
+    display: block;
+  }
+}
+
+@media (max-width: 480px) {
+  .header__nav {
+    padding: 10px 15px;
+  }
+
+  .img_logo {
+    margin-bottom: 10px;
+  }
+
+  .nav__list {
+    margin-top: 5px;
+    margin-left: 25px;
+    height: 250px;
+    background-color: white;
+  }
+
+  .nav__list ul {
+    margin-right: 15px;
+    margin-top: 5px;
+    display: flex;
+    gap: 25px;
+    
+  }
+
+  .img_social {
+    display: none;
+    width: 20px;
+    height: 20px;
+  }
 }
